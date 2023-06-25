@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ResponseInterceptor } from './core/interceptors';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { UserModule } from './features/user/user.module';
 
 import mongoConfigFactory from './configs/mongo.config';
 import secretConfigFactory from './configs/secret.config';
@@ -23,6 +24,7 @@ import secretConfigFactory from './configs/secret.config';
         useFindAndModify: false,
       }),
     }),
+    UserModule,
   ],
   controllers: [AppController],
   providers: [
