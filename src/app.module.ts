@@ -1,12 +1,14 @@
-import { APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
-import { Module, ValidationPipe } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
-import { ConfigModule, ConfigService } from '@nestjs/config';
-import { ResponseInterceptor } from './core/interceptors';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from './features/user/user.module';
+import { Module, ValidationPipe } from '@nestjs/common';
+import { ResponseInterceptor } from './core/interceptors';
+import { APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 
+import { UserModule } from './features/user/user.module';
+import { AuthModule } from './features/auth/auth.module';
+
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
 import mongoConfigFactory from './configs/mongo.config';
 import secretConfigFactory from './configs/secret.config';
 
@@ -25,6 +27,7 @@ import secretConfigFactory from './configs/secret.config';
       }),
     }),
     UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [

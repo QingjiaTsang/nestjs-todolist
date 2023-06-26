@@ -1,6 +1,6 @@
 import { randomBytes, pbkdf2Sync } from 'crypto';
 
-export class CommonUtilitiy {
+export class CommonUtility {
   public static encryptBySalt(
     password: string,
     salt = randomBytes(16).toString('hex'),
